@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+
+.about {
+  &__grid {
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: $space-3xl; align-items: start;
+    @media (max-width: $bp-lg) { grid-template-columns: 1fr; }
+  }
+  &__bio p { font-size: 1.0625rem; line-height: 1.8; }
+  &__github {
+    display: inline-block; margin-top: $space-lg;
+    color: $color-primary; font-family: $font-mono; font-size: 0.875rem;
+    transition: opacity $transition-base;
+    &:hover { opacity: 0.8; }
+  }
+}
+
+.skill-group { margin-bottom: $space-xl;
+  h3 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: $color-text-muted; margin-bottom: $space-md; }
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: $space-sm; }
+.tag {
+  background: rgba($color-primary, 0.1); border: 1px solid rgba($color-primary, 0.2);
+  color: $color-text; padding: $space-xs $space-md; border-radius: $radius-full;
+  font-size: 0.8rem; font-family: $font-mono;
+  &--arch { background: rgba($color-accent, 0.08); border-color: rgba($color-accent, 0.2); }
+}

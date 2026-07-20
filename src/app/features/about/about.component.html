@@ -1,0 +1,31 @@
+<section class="section about">
+  <h2 class="section-title">{{'about.title'|translate}} <span>{{'about.highlight'|translate}}</span></h2>
+  <div class="about__grid">
+    <div class="about__bio">
+      <p>{{'about.bio'|translate}}</p>
+      <a href="https://github.com/Saracardenas02" target="_blank" rel="noopener" class="about__github">
+        github.com/Saracardenas02 ↗
+      </a>
+    </div>
+    <div class="about__skills">
+      <div class="skill-group">
+        <h3>Backend</h3>
+        <div class="skill-tags">
+          @for (s of backend; track s) { <span class="tag">{{s}}</span> }
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Frontend</h3>
+        <div class="skill-tags">
+          @for (s of frontend; track s) { <span class="tag">{{s}}</span> }
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>{{'about.arch_title'|translate}}</h3>
+        <div class="skill-tags">
+          @for (s of arch; track s) { <span class="tag tag--arch">{{s}}</span> }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

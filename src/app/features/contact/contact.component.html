@@ -1,0 +1,44 @@
+<section class="section contact">
+  <h2 class="section-title">{{'contact.title'|translate}} <span>{{'contact.highlight'|translate}}</span></h2>
+  <p class="section-subtitle">{{'contact.subtitle'|translate}}</p>
+  <div class="contact__grid">
+    <div class="contact__info">
+      <div class="contact__item">
+        <span>📧</span>
+        <a href="mailto:contact.astrastudio.dev@gmail.com">contact.astrastudio.dev&#64;gmail.com</a>
+      </div>
+      <div class="contact__item">
+        <span>💼</span>
+        <a href="https://linkedin.com/in/saracardenas" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="contact__item">
+        <span>🐙</span>
+        <a href="https://github.com/Saracardenas02" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()">
+      @if (status() === 'success') {
+        <div class="contact__success">{{'contact.success'|translate}}</div>
+      } @else {
+        <div class="form-group" [class.form-group--error]="isInvalid('name')">
+          <label>{{'contact.name_label'|translate}}</label>
+          <input type="text" formControlName="name" autocomplete="name">
+        </div>
+        <div class="form-group" [class.form-group--error]="isInvalid('email')">
+          <label>{{'contact.email_label'|translate}}</label>
+          <input type="email" formControlName="email" autocomplete="email">
+        </div>
+        <div class="form-group" [class.form-group--error]="isInvalid('message')">
+          <label>{{'contact.message_label'|translate}}</label>
+          <textarea formControlName="message" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn--submit" [disabled]="status() === 'sending'">
+          {{status() === 'sending' ? '...' : ('contact.send'|translate)}}
+        </button>
+        @if (status() === 'error') {
+          <p class="contact__error">{{'contact.error'|translate}}</p>
+        }
+      }
+    </form>
+  </div>
+</section>

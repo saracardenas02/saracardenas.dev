@@ -1,0 +1,21 @@
+@use '../../../styles/variables' as *;
+
+.services__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: $space-xl;
+  @media (max-width: $bp-lg) { grid-template-columns: 1fr; } }
+
+.service-card {
+  background: $color-surface; border: 1px solid $color-border;
+  border-radius: $radius-lg; padding: $space-2xl; position: relative;
+  transition: border-color $transition-base, transform $transition-base;
+  &:hover { border-color: $color-primary; transform: translateY(-4px); }
+  &--featured { border-color: $color-primary; background: linear-gradient(135deg, rgba($color-primary,0.05), $color-surface); }
+  &__badge { position: absolute; top: -12px; left: $space-xl; background: $color-primary; color: white; padding: 2px $space-md; border-radius: $radius-full; font-size: 0.75rem; font-weight: 600; }
+  &__icon { font-size: 2rem; margin-bottom: $space-md; }
+  h3 { font-size: 1.25rem; color: $color-text; margin-bottom: $space-md; }
+  p { margin-bottom: $space-md; }
+  &__list { margin: $space-lg 0;
+    li { color: $color-text-muted; font-size: 0.9rem; padding: $space-xs 0 $space-xs $space-lg; position: relative;
+      &::before { content: '→'; position: absolute; left: 0; color: $color-primary; } } }
+  &__price { font-weight: 700; color: $color-text; font-size: 1.125rem; margin-bottom: $space-lg; }
+  &__cta { color: $color-primary; font-weight: 600; font-size: 0.95rem; &:hover { text-decoration: underline; } }
+}
