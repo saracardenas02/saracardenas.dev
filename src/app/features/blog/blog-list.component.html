@@ -1,0 +1,20 @@
+<section class="section blog">
+  <h2 class="section-title">{{'blog.title'|translate}} <span>{{'blog.highlight'|translate}}</span></h2>
+  <p class="section-subtitle">{{'blog.subtitle'|translate}}</p>
+  <div class="blog__grid">
+    @for (post of posts; track post.slug) {
+      <article class="post-card">
+        <div class="post-card__tags">
+          @for (tag of post.tags; track tag) { <span class="tag">{{tag}}</span> }
+        </div>
+        <h3>{{lang.current() === 'en' ? post.titleEn : post.titleEs}}</h3>
+        <p>{{lang.current() === 'en' ? post.summaryEn : post.summaryEs}}</p>
+        <div class="post-card__meta">
+          <span>{{post.publishedAt}}</span>
+          <span>{{post.readingMinutes}} min read</span>
+        </div>
+        <a [routerLink]="['/blog', post.slug]" class="post-card__link">{{'blog.read_more'|translate}} →</a>
+      </article>
+    }
+  </div>
+</section>

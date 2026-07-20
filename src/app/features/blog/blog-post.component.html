@@ -1,0 +1,20 @@
+@if (post()) {
+  <article class="section blog-post">
+    <a routerLink="/blog" class="blog-post__back">← Blog</a>
+    <div class="blog-post__tags">
+      @for (tag of post()!.tags; track tag) { <span class="tag">{{tag}}</span> }
+    </div>
+    <h1>{{lang.current() === 'en' ? post()!.titleEn : post()!.titleEs}}</h1>
+    <div class="blog-post__meta">
+      <span>{{post()!.publishedAt}}</span>
+      <span>{{post()!.readingMinutes}} min read</span>
+    </div>
+    <p class="blog-post__summary">{{lang.current() === 'en' ? post()!.summaryEn : post()!.summaryEs}}</p>
+    <pre class="blog-post__body">{{lang.current() === 'en' ? post()!.contentEn : post()!.contentEs}}</pre>
+  </article>
+} @else {
+  <section class="section">
+    <p>Post not found.</p>
+    <a routerLink="/blog">← Back to blog</a>
+  </section>
+}

@@ -1,0 +1,62 @@
+@use '../../../styles/variables' as *;
+
+.blog-post {
+  max-width: 760px;
+
+  &__back {
+    color: $color-primary;
+    font-size: 0.9rem;
+    margin-bottom: $space-xl;
+    display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    gap: $space-xs;
+    margin-bottom: $space-lg;
+  }
+
+  h1 {
+    margin-bottom: $space-md;
+  }
+
+  &__meta {
+    display: flex;
+    gap: $space-lg;
+    font-size: 0.8rem;
+    color: $color-text-muted;
+    font-family: $font-mono;
+    margin-bottom: $space-2xl;
+    padding-bottom: $space-xl;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__summary {
+    font-size: 1.125rem;
+    color: $color-text;
+    line-height: 1.7;
+    margin-bottom: $space-2xl;
+  }
+
+  &__body {
+    white-space: pre-wrap;
+    font-family: $font-sans;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: $color-text-muted;
+  }
+}
+
+.tag {
+  background: rgba($color-accent, 0.1);
+  border: 1px solid rgba($color-accent, 0.2);
+  color: $color-text-muted;
+  padding: 2px $space-sm;
+  border-radius: $radius-full;
+  font-size: 0.75rem;
+  font-family: $font-mono;
+}
