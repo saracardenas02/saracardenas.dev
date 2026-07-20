@@ -32,7 +32,7 @@ export class ContactComponent implements OnInit {
   submit(): void {
     if (this.form.invalid) { this.form.markAllAsTouched(); return; }
     this.status.set('sending');
-    this.http.post('https://formspree.io/f/FORMSPREE_ID', this.form.value).subscribe({
+    this.http.post('https://formspree.io/f/xpqvrbky', this.form.value).subscribe({
       next: () => { this.status.set('success'); this.form.reset(); },
       error: () => this.status.set('error'),
     });
