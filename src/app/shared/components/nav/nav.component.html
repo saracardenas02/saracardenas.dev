@@ -1,0 +1,22 @@
+<nav class="nav" [class.nav--scrolled]="isScrolled()">
+  <div class="nav__container">
+    <a routerLink="/" class="nav__brand" (click)="closeMenu()">
+      <span class="nav__brand-name">Sara Cardenas</span><span class="nav__brand-dot">.</span>
+    </a>
+    <button class="nav__hamburger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" [class.nav__links--open]="menuOpen()">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">{{'nav.home'|translate}}</a></li>
+      <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">{{'nav.about'|translate}}</a></li>
+      <li><a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">{{'nav.services'|translate}}</a></li>
+      <li><a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">{{'nav.blog'|translate}}</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">{{'nav.contact'|translate}}</a></li>
+      <li>
+        <button class="nav__lang-toggle" (click)="lang.toggle()">
+          {{lang.current() === 'en' ? '🇨🇴 ES' : '🇺🇸 EN'}}
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
