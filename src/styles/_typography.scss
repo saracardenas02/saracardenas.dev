@@ -1,0 +1,27 @@
+@use './variables' as *;
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: $color-text;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
+
+p { line-height: 1.75; color: $color-text-muted; }
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: $space-md;
+  span { color: $color-primary; }
+}
+
+.section-subtitle {
+  color: $color-text-muted;
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin-bottom: $space-2xl;
+}
