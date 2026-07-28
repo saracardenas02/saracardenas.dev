@@ -1,12 +1,11 @@
 import { Component, inject, HostListener, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LanguageService } from '../../../core/services/language.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, TranslatePipe],
+  imports: [TranslatePipe],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })

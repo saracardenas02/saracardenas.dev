@@ -3,12 +3,14 @@
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: $space-md $space-xl;
-  transition: background-color $transition-base, box-shadow $transition-base;
+  transition: background $transition-slow, box-shadow $transition-slow, border-color $transition-slow;
 
   &--scrolled {
-    background-color: rgba($color-surface, 0.95);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 1px 0 $color-border;
+    background: rgba(5, 8, 20, 0.82);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
   }
 
   &__container {
@@ -17,32 +19,44 @@
   }
 
   &__brand {
-    font-size: 1.25rem; font-weight: 700;
+    font-size: 1.25rem; font-weight: 800;
+    letter-spacing: -0.03em; text-decoration: none;
     &-name { color: $color-text; }
-    &-dot  { color: $color-primary; }
+    &-dot  { color: $color-accent-green; animation: pulse-glow 2.5s ease-in-out infinite; }
   }
 
   &__links {
     display: flex; align-items: center; gap: $space-xl;
+
     a {
-      color: $color-text-muted; font-size: 0.95rem;
+      color: $color-text-muted; font-size: 0.9rem; text-decoration: none;
       transition: color $transition-base;
-      &:hover, &.active { color: $color-text; }
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute; bottom: -3px; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, $color-primary, $color-accent);
+        transform: scaleX(0); transform-origin: left;
+        transition: transform 200ms ease;
+      }
+
+      &:hover { color: $color-text; &::after { transform: scaleX(1); } }
     }
   }
 
   &__lang-toggle {
-    color: $color-text-muted; font-size: 0.875rem;
+    color: $color-text-muted; font-size: 0.82rem;
     padding: $space-xs $space-sm;
     border: 1px solid $color-border; border-radius: $radius-sm;
     transition: all $transition-base; cursor: pointer; background: transparent;
-    &:hover { color: $color-text; border-color: $color-primary; }
+    &:hover { color: $color-text; border-color: $color-primary; background: rgba($color-primary, 0.06); }
   }
 
   &__hamburger {
     display: none; flex-direction: column; gap: 5px;
     padding: $space-xs; background: transparent; border: none; cursor: pointer;
-    span { display: block; width: 22px; height: 2px; background: $color-text; border-radius: 2px; }
+    span { display: block; width: 22px; height: 2px; background: $color-text; border-radius: 2px; transition: all 200ms; }
   }
 
   @media (max-width: $bp-md) {
@@ -50,8 +64,10 @@
     &__hamburger { display: flex; }
     &__links {
       display: none; position: absolute; top: 100%; left: 0; right: 0;
-      background-color: $color-surface; flex-direction: column;
-      padding: $space-lg; gap: $space-lg; border-bottom: 1px solid $color-border;
+      background: rgba(5, 8, 20, 0.96);
+      backdrop-filter: blur(24px);
+      flex-direction: column; padding: $space-lg; gap: $space-lg;
+      border-bottom: 1px solid $color-border;
       &--open { display: flex; }
     }
   }
