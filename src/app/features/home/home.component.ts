@@ -14,7 +14,7 @@ interface Project {
   tech:   string[];
   url:    string;
   status: 'live' | 'dev';
-  color:  'purple' | 'cyan' | 'green';
+  color:  'purple' | 'cyan' | 'green' | 'teal';
 }
 
 @Component({
@@ -52,6 +52,17 @@ export class HomeComponent implements OnInit {
       url: 'https://agendafacil-app-production.up.railway.app/',
       status: 'dev',
       color: 'cyan',
+    },
+    {
+      key: 'movilvet',
+      name: 'MovilVet Miembros',
+      type: 'Client App',
+      descEN: 'Custom membership system for a veterinary clinic. Manages pets, owners, subscriptions and sends automated WhatsApp reminders via Evolution API.',
+      descES: 'Sistema de membresías a la medida para veterinaria. Maneja mascotas, tutores, suscripciones y envía recordatorios automáticos por WhatsApp vía Evolution API.',
+      tech: ['Spring Boot 4.1', 'Angular 21', 'PostgreSQL', 'WhatsApp API', 'Docker'],
+      url: 'https://movilvet-miembros-production.up.railway.app/',
+      status: 'live',
+      color: 'teal',
     },
     {
       key: 'astrastudio',
