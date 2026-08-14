@@ -92,6 +92,11 @@
   <div class="projects__grid">
     @for (p of projects; track p.key) {
       <div [class]="'project-card project-card--' + p.color">
+        @if (p.image) {
+          <div class="project-card__preview">
+            <img [src]="p.image" [alt]="p.name + ' screenshot'" loading="lazy">
+          </div>
+        }
         <div class="project-card__header">
           <span class="project-card__type">{{p.type}}</span>
           <span class="project-card__status" [class.project-card__status--live]="p.status === 'live'">

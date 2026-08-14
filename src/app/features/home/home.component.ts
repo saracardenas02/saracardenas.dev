@@ -13,6 +13,7 @@ interface Project {
   descES: string;
   tech:   string[];
   url:    string;
+  image?: string;
   status: 'live' | 'dev';
   color:  'purple' | 'cyan' | 'green' | 'teal';
 }
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit {
       descES: 'Sistema de membresías a la medida para veterinaria. Maneja mascotas, tutores, suscripciones y envía recordatorios automáticos por WhatsApp vía Evolution API.',
       tech: ['Spring Boot 4.1', 'Angular 21', 'PostgreSQL', 'WhatsApp API', 'Docker'],
       url: 'https://movilvet-miembros-production.up.railway.app/',
+      image: 'assets/projects/movilvetcapt2.png',
       status: 'live',
       color: 'teal',
     },

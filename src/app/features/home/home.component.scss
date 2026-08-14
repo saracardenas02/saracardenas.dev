@@ -322,6 +322,20 @@
   &:hover { transform: translateY(-5px); }
 }
 
+.project-card__preview {
+  margin: -$space-xl -$space-xl $space-md -$space-xl;
+  border-radius: $radius-xl $radius-xl 0 0;
+  overflow: hidden;
+  height: 180px;
+  img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+    transition: transform 400ms ease;
+  }
+  &:hover img { transform: scale(1.03); }
+}
+
 .project-card__header {
   display: flex; align-items: center; justify-content: space-between;
 }
