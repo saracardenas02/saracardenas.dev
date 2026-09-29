@@ -19,7 +19,7 @@ export const es: Translations = {
   },
   projects: {
     title: 'Proyectos', highlight: 'recientes',
-    subtitle: 'Productos que construí desde cero — en producción.',
+    subtitle: 'Productos que construí de principio a fin — de la arquitectura al despliegue.',
     view_demo: 'Demo en vivo',
     in_dev: 'En desarrollo',
     live: 'En vivo',

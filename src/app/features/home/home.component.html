@@ -110,11 +110,13 @@
             <span class="project-card__tech-tag">{{t}}</span>
           }
         </div>
-        <div class="project-card__links">
-          <a [href]="p.url" target="_blank" rel="noopener" class="project-card__link">
-            {{'projects.view_demo'|translate}} ↗
-          </a>
-        </div>
+        @if (p.url) {
+          <div class="project-card__links">
+            <a [href]="p.url" target="_blank" rel="noopener" class="project-card__link">
+              {{'projects.view_demo'|translate}} ↗
+            </a>
+          </div>
+        }
       </div>
     }
   </div>
