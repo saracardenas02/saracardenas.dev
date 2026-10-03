@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit {
       descEN: 'Booking SaaS for local businesses. Multi-tenant system with appointments, JWT auth, WhatsApp notifications and an admin dashboard. Hexagonal architecture.',
       descES: 'SaaS de reservas para negocios locales. Sistema multi-tenant con citas, autenticación JWT, notificaciones por WhatsApp y panel admin. Arquitectura hexagonal.',
       tech: ['Spring Boot', 'Angular', 'PostgreSQL', 'Docker', 'Hexagonal'],
-      url: '',
-      status: 'dev',
+      url: 'https://kalendapp.celvo.dev',
+      status: 'live',
       color: 'cyan',
     },
     {
@@ -64,17 +64,6 @@ export class HomeComponent implements OnInit {
       url: '',
       status: 'dev',
       color: 'teal',
-    },
-    {
-      key: 'portfolio',
-      name: 'saracardenas.dev',
-      type: 'Portfolio',
-      descEN: 'This portfolio. Angular 21 SSR, Vercel deploy, bilingual EN/ES and clean architecture.',
-      descES: 'Este portafolio. Angular 21 SSR, deploy en Vercel, bilingüe EN/ES y arquitectura limpia.',
-      tech: ['Angular 21', 'SSR', 'TypeScript', 'Vercel'],
-      url: 'https://saracardenas-dev.vercel.app/',
-      status: 'live',
-      color: 'green',
     },
   ];
 

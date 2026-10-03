@@ -32,7 +32,7 @@ export const es: Translations = {
     app_title: 'Aplicaciones Web',
     app_desc: 'Apps web personalizadas: paneles admin, CRMs, inventarios, portales de reservas y dashboards con arquitectura limpia.',
     saas_title: 'Productos SaaS',
-    saas_desc: 'Actualmente construyendo AgendaFácil — sistema de reservas para negocios locales. Tu idea podría ser la siguiente.',
+    saas_desc: 'Kalendapp, mi SaaS de reservas para negocios locales, ya está en producción. Tu idea podría ser la siguiente.',
     cta: 'Hablemos',
   },
   contact: {

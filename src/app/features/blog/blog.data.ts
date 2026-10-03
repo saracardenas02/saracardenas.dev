@@ -10,7 +10,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: '2026-07-20',
     tags: ['Spring Boot', 'Java', 'Architecture'],
     readingMinutes: 7,
-    contentEn: `When I started building AgendaFácil, I chose Hexagonal Architecture to avoid coupling business logic to the framework.
+    contentEn: `When I started building Kalendapp, I chose Hexagonal Architecture to avoid coupling business logic to the framework.
 
 The key rule: domain classes are pure Java — no Spring annotations. Everything depends on the domain; the domain depends on nothing.
 
@@ -24,7 +24,7 @@ Structure:
 The Spring @Repository annotation lives in infrastructure. The domain never knows Spring exists. This makes domain logic trivially testable without starting a Spring context.
 
 Worth the complexity? For a landing page: no. For a SaaS with evolving business rules: absolutely.`,
-    contentEs: `Cuando empecé a construir AgendaFácil, elegí Arquitectura Hexagonal para evitar acoplar la lógica de negocio al framework.
+    contentEs: `Cuando empecé a construir Kalendapp, elegí Arquitectura Hexagonal para evitar acoplar la lógica de negocio al framework.
 
 La regla clave: las clases del dominio son Java puro — sin anotaciones de Spring. Todo depende del dominio; el dominio no depende de nada.
 
