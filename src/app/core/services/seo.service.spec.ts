@@ -14,9 +14,9 @@ describe('SeoService', () => {
     metaService = TestBed.inject(Meta);
   });
 
-  it('should set page title with site suffix', () => {
-    service.updateMeta('About', 'Bio page', 'en');
-    expect(titleService.getTitle()).toBe('About | Sara Cardenas');
+  it('should set the page title as given', () => {
+    service.updateMeta('Sara Cárdenas | Full Stack Developer', 'Bio page', 'en');
+    expect(titleService.getTitle()).toBe('Sara Cárdenas | Full Stack Developer');
   });
 
   it('should set meta description', () => {

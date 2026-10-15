@@ -14,7 +14,7 @@ describe('TranslatePipe', () => {
   });
 
   it('should return English string for hero.title in EN', () => {
-    expect(pipe.transform('hero.title')).toBe('Sara Cardenas');
+    expect(pipe.transform('hero.title')).toBe('Sara Cárdenas');
   });
 
   it('should return Spanish string after toggle', () => {

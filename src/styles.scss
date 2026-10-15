@@ -2,53 +2,69 @@
 @use './styles/reset';
 @use './styles/typography';
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap');
+:root {
+  --paper:    #f3efe6;
+  --paper-2:  #ebe6da;
+  --ink:      #1c1b18;
+  --ink-soft: #46433c;
+  --muted:    #7a7468;
+  --rule:     #d6cfbf;
+  --accent:   #b4441f;
+  color-scheme: light;
+}
 
-.section {
-  padding: $space-3xl $space-xl;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  @media (max-width: $bp-md) {
-    padding: $space-2xl $space-md;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:    #151412;
+    --paper-2:  #1d1c19;
+    --ink:      #ece7dc;
+    --ink-soft: #c4beb1;
+    --muted:    #8f897d;
+    --rule:     #2e2c27;
+    --accent:   #e07a50;
+    color-scheme: dark;
   }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { text-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
-  50%       { text-shadow: 0 0 50px rgba(34, 197, 94, 0.9), 0 0 100px rgba(34, 197, 94, 0.3); }
+body {
+  background: var(--paper);
+  color: var(--ink);
 }
 
-@keyframes float-a {
-  0%, 100% { transform: translate(0, 0); }
-  33%       { transform: translate(60px, 40px); }
-  66%       { transform: translate(-40px, 70px); }
+::selection { background: var(--accent); color: var(--paper); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
-@keyframes float-b {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(-70px, -50px); }
+// Contenedor de página compartido
+.wrap {
+  max-width: $page-max;
+  margin: 0 auto;
+  padding-inline: $gutter;
 }
 
-@keyframes float-c {
-  0%, 100% { transform: translate(0, 0); }
-  40%       { transform: translate(50px, -60px); }
-  75%       { transform: translate(-30px, 30px); }
+// Etiqueta mono pequeña (índices, fechas, rótulos)
+.mono {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.4; }
+// Enlace subrayado de la casa
+.u-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 160ms ease, color 160ms ease;
+  &:hover { text-decoration-color: var(--accent); color: var(--accent); }
 }
 
-@keyframes gradient-shift {
-  0%   { background-position: 0% center; }
-  50%  { background-position: 100% center; }
-  100% { background-position: 0% center; }
-}
-
-@keyframes scroll-line {
-  0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
-  50%  { opacity: 1; }
-  100% { opacity: 0; transform: scaleY(1); transform-origin: top; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
 }

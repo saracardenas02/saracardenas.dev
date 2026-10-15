@@ -12,11 +12,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 export class NavComponent {
   readonly lang = inject(LanguageService);
   readonly isScrolled = signal(false);
-  readonly menuOpen = signal(false);
 
   @HostListener('window:scroll')
-  onScroll(): void { this.isScrolled.set(window.scrollY > 20); }
-
-  toggleMenu(): void { this.menuOpen.update(v => !v); }
-  closeMenu(): void { this.menuOpen.set(false); }
+  onScroll(): void { this.isScrolled.set(window.scrollY > 8); }
 }

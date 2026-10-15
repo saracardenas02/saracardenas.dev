@@ -32,6 +32,6 @@ describe('LanguageService', () => {
 
   it('should return translation for current language', () => {
     const t = service.t();
-    expect(t.hero.title).toBe('Sara Cardenas');
+    expect(t.hero.title).toBe('Sara Cárdenas');
   });
 });

@@ -9,7 +9,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   imports: [RouterOutlet, NavComponent, FooterComponent],
   template: `
     <app-nav />
-    <main style="padding-top: 72px; min-height: calc(100vh - 72px);">
+    <main id="top">
       <router-outlet />
     </main>
     <app-footer />

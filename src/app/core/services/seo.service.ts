@@ -7,16 +7,16 @@ export class SeoService {
   private readonly meta = inject(Meta);
 
   updateMeta(pageTitle: string, description: string, lang: 'en' | 'es'): void {
-    this.title.setTitle(`${pageTitle} | Sara Cardenas`);
+    this.title.setTitle(pageTitle);
     const locale = lang === 'es' ? 'es_CO' : 'en_US';
     this.meta.updateTag({ name: 'description', content: description });
-    this.meta.updateTag({ property: 'og:title', content: `${pageTitle} | Sara Cardenas` });
+    this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:locale', content: locale });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://saracardenas.dev' });
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({ name: 'twitter:title', content: `${pageTitle} | Sara Cardenas` });
+    this.meta.updateTag({ property: 'og:url', content: 'https://saracardenas-dev.vercel.app' });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+    this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
     this.meta.updateTag({ name: 'twitter:description', content: description });
   }
 }

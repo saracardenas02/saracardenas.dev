@@ -1,223 +1,120 @@
-<!-- ─── MESH BACKGROUND ───────────────────────────────── -->
-<div class="mesh-bg" aria-hidden="true">
-  <div class="orb orb--purple"></div>
-  <div class="orb orb--cyan"></div>
-  <div class="orb orb--green"></div>
-</div>
+@let t = lang.t();
 
-<!-- ─── HERO ──────────────────────────────────────────── -->
-<section id="home" class="hero">
-  <div class="hero__content">
-    <span class="hero__badge">{{'hero.available'|translate}}</span>
-    <p class="hero__greeting">{{'hero.greeting'|translate}}</p>
-    <h1 class="hero__name">
-      <span class="hero__name-text">Sara Cardenas</span><span class="hero__dot">.</span>
-    </h1>
-    <p class="hero__subtitle">{{'hero.subtitle'|translate}}</p>
-    <div class="hero__cta">
-      <a href="#projects" class="btn btn--primary">{{'hero.cta_primary'|translate}}</a>
-      <a href="#contact"  class="btn btn--ghost">{{'hero.cta_secondary'|translate}}</a>
-    </div>
-    <div class="hero__stack">
-      <span class="hero__tag">Java 21</span>
-      <span class="hero__tag">Spring Boot</span>
-      <span class="hero__tag">Angular 21</span>
-      <span class="hero__tag">PostgreSQL</span>
-      <span class="hero__tag">Docker</span>
-    </div>
-  </div>
-  <div class="hero__scroll-indicator" aria-hidden="true">
-    <span class="hero__scroll-line"></span>
+<!-- Portada -->
+<section class="hero wrap">
+  <p class="mono hero__kicker">{{t.hero.title}}</p>
+  <h1 class="hero__lead">
+    {{t.hero.lead}} <em>{{t.hero.lead_em}}</em>
+    <span class="hero__lead-end">{{t.hero.lead_end}}</span>
+  </h1>
+  <p class="hero__intro">{{t.hero.intro}}</p>
+
+  <dl class="hero__facts">
+    <div><dt class="mono">{{t.hero.now_label}}</dt><dd>{{t.hero.now}}</dd></div>
+    <div><dt class="mono">{{t.hero.base_label}}</dt><dd>{{t.hero.base}}</dd></div>
+    <div><dt class="mono">{{t.hero.stack_label}}</dt><dd>{{t.hero.stack}}</dd></div>
+  </dl>
+
+  <div class="hero__links">
+    <a href="#proyectos" class="btn">{{t.hero.cta}} ↓</a>
+    <a [href]="linkedin" target="_blank" rel="noopener" class="u-link">LinkedIn ↗</a>
+    <a [href]="github" target="_blank" rel="noopener" class="u-link">GitHub ↗</a>
   </div>
 </section>
 
-<!-- ─── ABOUT ─────────────────────────────────────────── -->
-<section id="about" class="section about">
-  <div class="section__header">
-    <h2>{{'about.title'|translate}} <span>{{'about.highlight'|translate}}</span></h2>
-  </div>
-  <div class="bento">
-    <div class="bento__card bento__card--bio">
-      <p class="bento__label">Bio</p>
-      <p class="bento__bio-text">{{'about.bio'|translate}}</p>
-    </div>
-    <div class="bento__card bento__card--location">
-      <span class="bento__icon">📍</span>
-      <p class="bento__value">Colombia</p>
-      <p class="bento__sub">Remoto / Remote</p>
-    </div>
-    <div class="bento__card bento__card--avail">
-      <span class="bento__avail-dot">Available</span>
-      <p class="bento__sub">for projects</p>
-    </div>
-    <div class="bento__card bento__card--backend">
-      <p class="bento__label">Backend</p>
-      <div class="bento__tags">
-        @for (s of backend; track s) {
-          <span class="bento__tag bento__tag--purple">{{s}}</span>
-        }
-      </div>
-    </div>
-    <div class="bento__card bento__card--frontend">
-      <p class="bento__label">Frontend</p>
-      <div class="bento__tags">
-        @for (s of frontend; track s) {
-          <span class="bento__tag bento__tag--cyan">{{s}}</span>
-        }
-      </div>
-    </div>
-    <div class="bento__card bento__card--arch">
-      <p class="bento__label">{{'about.arch_title'|translate}}</p>
-      <div class="bento__tags">
-        @for (s of arch; track s) {
-          <span class="bento__tag bento__tag--green">{{s}}</span>
-        }
-      </div>
-    </div>
-    <div class="bento__card bento__card--github">
-      <span class="bento__github-icon">&lt;/&gt;</span>
-      <a href="https://github.com/Saracardenas02" target="_blank" rel="noopener">
-        github.com/Saracardenas02 ↗
-      </a>
-    </div>
-  </div>
-</section>
+<!-- Trayectoria -->
+<section id="trayectoria" class="block wrap">
+  <header class="block__head">
+    <span class="mono">01 / {{t.work.label}}</span>
+    <h2>{{t.work.title}}</h2>
+  </header>
 
-<!-- ─── PROJECTS ──────────────────────────────────────── -->
-<section id="projects" class="section projects">
-  <div class="section__header">
-    <h2>{{'projects.title'|translate}} <span>{{'projects.highlight'|translate}}</span></h2>
-    <p>{{'projects.subtitle'|translate}}</p>
-  </div>
-  <div class="projects__grid">
-    @for (p of projects; track p.key) {
-      <div [class]="'project-card project-card--' + p.color">
-        @if (p.image) {
-          <div class="project-card__preview">
-            <img [src]="p.image" [alt]="p.name + ' screenshot'" loading="lazy">
-          </div>
-        }
-        <div class="project-card__header">
-          <span class="project-card__type">{{p.type}}</span>
-          <span class="project-card__status" [class.project-card__status--live]="p.status === 'live'">
-            {{p.status === 'live' ? ('projects.live'|translate) : ('projects.in_dev'|translate)}}
-          </span>
+  <ol class="jobs">
+    @for (j of t.work.jobs; track j.dates) {
+      <li class="job">
+        <span class="mono job__dates">{{j.dates}}</span>
+        <div class="job__body">
+          <h3 class="job__role">{{j.role}}</h3>
+          <p class="job__org">
+            @if (j.url) {
+              <a [href]="j.url" target="_blank" rel="noopener" class="u-link">{{j.org}}</a>
+            } @else {
+              {{j.org}}
+            }
+          </p>
+          <p class="job__text">{{j.text}}</p>
         </div>
-        <h3 class="project-card__name">{{p.name}}</h3>
-        <p class="project-card__desc">{{lang.current() === 'es' ? p.descES : p.descEN}}</p>
-        <div class="project-card__tech">
-          @for (t of p.tech; track t) {
-            <span class="project-card__tech-tag">{{t}}</span>
-          }
-        </div>
-        @if (p.url) {
-          <div class="project-card__links">
-            <a [href]="p.url" target="_blank" rel="noopener" class="project-card__link">
-              {{'projects.view_demo'|translate}} ↗
-            </a>
-          </div>
-        }
-      </div>
+      </li>
     }
-  </div>
+  </ol>
 </section>
 
-<!-- ─── SERVICES ──────────────────────────────────────── -->
-<section id="services" class="section services">
-  <div class="section__header">
-    <h2>{{'services.title'|translate}} <span>{{'services.highlight'|translate}}</span></h2>
-    <p>{{'services.subtitle'|translate}}</p>
-  </div>
-  <div class="services__grid">
-    <div class="service-card">
-      <div class="service-card__icon">🌐</div>
-      <h3>{{'services.landing_title'|translate}}</h3>
-      <p>{{'services.landing_desc'|translate}}</p>
-      <ul class="service-card__list">
-        <li>Mobile-first + SEO</li>
-        <li>Angular SSR</li>
-        <li>Core Web Vitals 90+</li>
-        <li>Bilingual EN/ES</li>
-      </ul>
-      <p class="service-card__price">From $300 USD</p>
-      <a href="#contact" class="service-card__cta">{{'services.cta'|translate}} →</a>
-    </div>
-    <div class="service-card service-card--featured">
-      <div class="service-card__badge">Popular</div>
-      <div class="service-card__icon">⚙️</div>
-      <h3>{{'services.app_title'|translate}}</h3>
-      <p>{{'services.app_desc'|translate}}</p>
-      <ul class="service-card__list">
-        <li>Spring Boot + Angular</li>
-        <li>Hexagonal Architecture</li>
-        <li>Docker + CI/CD</li>
-        <li>OpenAPI docs</li>
-      </ul>
-      <p class="service-card__price">From $1,000 USD</p>
-      <a href="#contact" class="service-card__cta">{{'services.cta'|translate}} →</a>
-    </div>
-    <div class="service-card">
-      <div class="service-card__icon">🚀</div>
-      <h3>{{'services.saas_title'|translate}}</h3>
-      <p>{{'services.saas_desc'|translate}}</p>
-      <ul class="service-card__list">
-        <li>Kalendapp — en producción</li>
-        <li>Booking for local businesses</li>
-        <li>kalendapp.celvo.dev</li>
-      </ul>
-      <p class="service-card__price">From $15 USD/mo</p>
-      <a href="#contact" class="service-card__cta">{{'services.cta'|translate}} →</a>
-    </div>
-  </div>
-</section>
+<!-- Proyectos -->
+<section id="proyectos" class="block wrap">
+  <header class="block__head">
+    <span class="mono">02 / {{t.projects.label}}</span>
+    <h2>{{t.projects.title}}</h2>
+    <p class="block__intro">{{t.projects.intro}}</p>
+  </header>
 
-<!-- ─── CONTACT ────────────────────────────────────────── -->
-<section id="contact" class="section contact">
-  <div class="section__header">
-    <h2>{{'contact.title'|translate}} <span>{{'contact.highlight'|translate}}</span></h2>
-    <p>{{'contact.subtitle'|translate}}</p>
-  </div>
-  <div class="contact__grid">
-    <div class="contact__info">
-      <h3>{{'contact.connect'|translate}}</h3>
-      <div class="contact__links">
-        <a href="mailto:smcm981024@gmail.com" class="contact__link">
-          <span class="contact__link-icon">📧</span>
-          smcm981024&#64;gmail.com
-        </a>
-        <a href="https://linkedin.com/in/saracardenas" target="_blank" rel="noopener" class="contact__link">
-          <span class="contact__link-icon">💼</span>
-          LinkedIn
-        </a>
-        <a href="https://github.com/Saracardenas02" target="_blank" rel="noopener" class="contact__link">
-          <span class="contact__link-icon">🐙</span>
-          GitHub
-        </a>
-      </div>
-    </div>
-    <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()">
-      @if (status() === 'success') {
-        <div class="contact__success">{{'contact.success'|translate}}</div>
-      } @else {
-        <div class="form-group" [class.form-group--error]="isInvalid('name')">
-          <label>{{'contact.name_label'|translate}}</label>
-          <input type="text" formControlName="name" autocomplete="name">
-        </div>
-        <div class="form-group" [class.form-group--error]="isInvalid('email')">
-          <label>{{'contact.email_label'|translate}}</label>
-          <input type="email" formControlName="email" autocomplete="email">
-        </div>
-        <div class="form-group" [class.form-group--error]="isInvalid('message')">
-          <label>{{'contact.message_label'|translate}}</label>
-          <textarea formControlName="message" rows="5"></textarea>
-        </div>
-        <button type="submit" class="btn--submit" [disabled]="status() === 'sending'">
-          {{status() === 'sending' ? '...' : ('contact.send'|translate)}}
-        </button>
-        @if (status() === 'error') {
-          <p class="contact__error">{{'contact.error'|translate}}</p>
+  @for (p of t.projects.items; track p.name; let i = $index) {
+    <article class="project">
+      <div class="project__side">
+        <span class="project__num">{{pad(i)}}</span>
+        <h3 class="project__name">{{p.name}}</h3>
+        <p class="mono">{{p.kind}}</p>
+        <p class="project__status mono" [class.project__status--live]="p.live">
+          <span class="project__dot" aria-hidden="true"></span>{{p.status}}
+        </p>
+        @if (p.url) {
+          <a [href]="p.url" target="_blank" rel="noopener" class="u-link project__url">{{p.urlLabel}} ↗</a>
         }
+      </div>
+      <dl class="project__detail">
+        <div><dt class="mono">{{t.projects.problem}}</dt><dd>{{p.problem}}</dd></div>
+        <div><dt class="mono">{{t.projects.work}}</dt><dd>{{p.work}}</dd></div>
+        <div><dt class="mono">{{t.projects.stack}}</dt><dd class="project__stack">{{p.stack}}</dd></div>
+      </dl>
+    </article>
+  }
+</section>
+
+<!-- Herramientas -->
+<section id="herramientas" class="block wrap">
+  <header class="block__head">
+    <span class="mono">03 / {{t.stack.label}}</span>
+    <h2>{{t.stack.title}}</h2>
+  </header>
+
+  <div class="toolkit">
+    <dl class="toolkit__list">
+      @for (g of t.stack.groups; track g.name) {
+        <div><dt>{{g.name}}</dt><dd>{{g.items}}</dd></div>
       }
-    </form>
+    </dl>
+    <aside class="toolkit__edu">
+      <p class="mono">{{t.stack.edu_title}}</p>
+      @for (e of t.stack.edu; track e.name) {
+        <div class="edu">
+          <p class="edu__name">{{e.name}}</p>
+          <p class="edu__detail">{{e.detail}}</p>
+        </div>
+      }
+    </aside>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="block wrap contact">
+  <header class="block__head">
+    <span class="mono">04 / {{t.contact.label}}</span>
+  </header>
+  <h2 class="contact__title">{{t.contact.title}}</h2>
+  <p class="contact__text">{{t.contact.text}}</p>
+  <a [href]="'mailto:' + email" class="contact__mail">{{email}}</a>
+  <div class="contact__links">
+    <a [href]="linkedin" target="_blank" rel="noopener" class="u-link">LinkedIn ↗</a>
+    <a [href]="github" target="_blank" rel="noopener" class="u-link">GitHub ↗</a>
+    <a href="https://celvo.dev" target="_blank" rel="noopener" class="u-link">Celvo ↗</a>
   </div>
 </section>

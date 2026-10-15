@@ -1,22 +1,17 @@
-<nav class="nav" [class.nav--scrolled]="isScrolled()">
-  <div class="nav__container">
-    <a href="#home" class="nav__brand" (click)="closeMenu()">
-      <span class="nav__brand-name">Sara Cardenas</span><span class="nav__brand-dot">.</span>
-    </a>
-    <button class="nav__hamburger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+<header class="nav" [class.nav--scrolled]="isScrolled()">
+  <div class="wrap nav__row">
+    <a href="#top" class="nav__brand">Sara Cárdenas</a>
+    <nav class="nav__links" aria-label="Secciones">
+      <a href="#trayectoria">{{'nav.work'|translate}}</a>
+      <a href="#proyectos">{{'nav.projects'|translate}}</a>
+      <a href="#herramientas">{{'nav.stack'|translate}}</a>
+      <a href="#contacto">{{'nav.contact'|translate}}</a>
+    </nav>
+    <button class="nav__lang" (click)="lang.toggle()"
+            [attr.aria-label]="lang.current() === 'es' ? 'Switch to English' : 'Cambiar a español'">
+      <span [class.on]="lang.current() === 'es'">ES</span>
+      <span class="nav__lang-sep">/</span>
+      <span [class.on]="lang.current() === 'en'">EN</span>
     </button>
-    <ul class="nav__links" [class.nav__links--open]="menuOpen()">
-      <li><a href="#home"     (click)="closeMenu()">{{'nav.home'|translate}}</a></li>
-      <li><a href="#about"    (click)="closeMenu()">{{'nav.about'|translate}}</a></li>
-      <li><a href="#projects" (click)="closeMenu()">{{'nav.projects'|translate}}</a></li>
-      <li><a href="#services" (click)="closeMenu()">{{'nav.services'|translate}}</a></li>
-      <li><a href="#contact"  (click)="closeMenu()">{{'nav.contact'|translate}}</a></li>
-      <li>
-        <button class="nav__lang-toggle" (click)="lang.toggle()">
-          {{lang.current() === 'en' ? '🇨🇴 ES' : '🇺🇸 EN'}}
-        </button>
-      </li>
-    </ul>
   </div>
-</nav>
+</header>
