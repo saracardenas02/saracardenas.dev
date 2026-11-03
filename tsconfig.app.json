@@ -12,10 +12,6 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "src/**/*.spec.ts",
-    "src/app/features/about/**",
-    "src/app/features/blog/**",
-    "src/app/features/contact/**",
-    "src/app/features/services-page/**"
+    "src/**/*.spec.ts"
   ]
 }
