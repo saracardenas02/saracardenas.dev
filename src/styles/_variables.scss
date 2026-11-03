@@ -1,10 +1,9 @@
-// Los colores viven como custom properties en styles.scss (claro/oscuro).
-$font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-$font-sans:  'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-$font-mono:  'IBM Plex Mono', ui-monospace, 'Cascadia Code', monospace;
+// Los colores viven como custom properties en styles.scss.
+$font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-mono: 'Geist Mono', ui-monospace, 'Cascadia Code', monospace;
 
 $page-max: 1120px;
-$gutter:   clamp(1rem, 4vw, 2.5rem);
+$gutter:   clamp(1rem, 4vw, 2rem);
 
 $bp-sm: 576px;
 $bp-md: 768px;

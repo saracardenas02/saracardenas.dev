@@ -19,7 +19,7 @@ describe('TranslatePipe', () => {
 
   it('should return Spanish string after toggle', () => {
     langService.toggle();
-    expect(pipe.transform('nav.home')).toBe('Inicio');
+    expect(pipe.transform('nav.work')).toBe('Experiencia');
   });
 
   it('should return key if path not found', () => {

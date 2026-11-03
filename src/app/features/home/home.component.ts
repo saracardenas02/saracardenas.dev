@@ -1,4 +1,4 @@
-import { Component, inject, effect } from '@angular/core';
+import { Component, inject, effect, signal } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { SeoService } from '../../core/services/seo.service';
 import { LanguageService } from '../../core/services/language.service';
@@ -17,6 +17,7 @@ export class HomeComponent {
   readonly email    = 'smcm981024@gmail.com';
   readonly linkedin = 'https://www.linkedin.com/in/sara-melisa-cardenas-meneses-5b568822a';
   readonly github   = 'https://github.com/Saracardenas02';
+  readonly copied   = signal(false);
 
   constructor() {
     effect(() => {
@@ -26,7 +27,13 @@ export class HomeComponent {
     });
   }
 
-  pad(i: number): string {
-    return String(i + 1).padStart(2, '0');
+  async copyEmail(): Promise<void> {
+    try {
+      await navigator.clipboard.writeText(this.email);
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 1800);
+    } catch {
+      window.location.href = `mailto:${this.email}`;
+    }
   }
 }

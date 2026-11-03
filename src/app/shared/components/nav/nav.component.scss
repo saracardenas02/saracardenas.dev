@@ -2,47 +2,62 @@
 
 .nav {
   position: sticky; top: 0; z-index: 50;
-  background: var(--paper);
+  background: rgba(9, 9, 11, 0.72);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color 200ms ease;
 
-  &--scrolled { border-bottom-color: var(--rule); }
+  &--scrolled { border-bottom-color: var(--line); }
 
   &__row {
+    height: 64px;
     display: flex; align-items: center; gap: 2rem;
-    height: 60px;
   }
 
   &__brand {
-    font-family: $font-serif; font-size: 1.15rem;
-    color: var(--ink); text-decoration: none;
-    margin-right: auto;
+    display: flex; align-items: center; gap: 0.65rem;
+    text-decoration: none; color: var(--text);
+    font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em;
+  }
+
+  &__mark {
+    display: grid; place-items: center;
+    width: 28px; height: 28px; border-radius: 7px;
+    background: var(--text); color: var(--bg);
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0;
   }
 
   &__links {
     display: flex; gap: 1.75rem;
     a {
-      font-size: 0.88rem; color: var(--ink-soft); text-decoration: none;
-      transition: color 160ms ease;
-      &:hover { color: var(--accent); }
+      color: var(--text-2); text-decoration: none; font-size: 0.9rem;
+      transition: color 150ms ease;
+      &:hover { color: var(--text); }
     }
+  }
+
+  &__end {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 0.75rem;
   }
 
   &__lang {
-    font-family: $font-mono; font-size: 0.78rem; color: var(--muted);
-    padding: 0.35rem 0;
-    span.on { color: var(--ink); font-weight: 500; }
-    &-sep { margin: 0 0.3rem; color: var(--rule); }
-    &:hover span:not(.on):not(.nav__lang-sep) { color: var(--accent); }
+    height: 2.6rem; min-width: 2.6rem; padding-inline: 0.6rem;
+    border-radius: 8px;
+    font-family: $font-mono; font-size: 0.78rem;
+    color: var(--text-2);
+    border: 1px solid var(--line-2);
+    transition: color 150ms ease, background 150ms ease;
+    &:hover { color: var(--text); background: var(--surface-2); }
   }
 
   @media (max-width: $bp-md) {
-    &__row { flex-wrap: wrap; height: auto; padding-block: 0.8rem 0.6rem; row-gap: 0.5rem; }
-    &__links {
-      order: 3; width: 100%; gap: 1.25rem;
-      overflow-x: auto; scrollbar-width: none;
-      &::-webkit-scrollbar { display: none; }
-      a { white-space: nowrap; font-size: 0.85rem; }
-    }
+    &__links { display: none; }
+    &__row { gap: 1rem; }
+  }
+
+  @media (max-width: 360px) {
+    &__name { display: none; }
   }
 }

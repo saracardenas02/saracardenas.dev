@@ -1,17 +1,20 @@
 <header class="nav" [class.nav--scrolled]="isScrolled()">
   <div class="wrap nav__row">
-    <a href="#top" class="nav__brand">Sara Cárdenas</a>
+    <a href="#top" class="nav__brand" aria-label="Sara Cárdenas">
+      <span class="nav__mark" aria-hidden="true">SC</span>
+      <span class="nav__name">Sara Cárdenas</span>
+    </a>
     <nav class="nav__links" aria-label="Secciones">
-      <a href="#trayectoria">{{'nav.work'|translate}}</a>
+      <a href="#experiencia">{{'nav.work'|translate}}</a>
       <a href="#proyectos">{{'nav.projects'|translate}}</a>
-      <a href="#herramientas">{{'nav.stack'|translate}}</a>
-      <a href="#contacto">{{'nav.contact'|translate}}</a>
+      <a href="#stack">{{'nav.stack'|translate}}</a>
     </nav>
-    <button class="nav__lang" (click)="lang.toggle()"
-            [attr.aria-label]="lang.current() === 'es' ? 'Switch to English' : 'Cambiar a español'">
-      <span [class.on]="lang.current() === 'es'">ES</span>
-      <span class="nav__lang-sep">/</span>
-      <span [class.on]="lang.current() === 'en'">EN</span>
-    </button>
+    <div class="nav__end">
+      <button class="nav__lang" (click)="lang.toggle()"
+              [attr.aria-label]="lang.current() === 'es' ? 'Switch to English' : 'Cambiar a español'">
+        {{ lang.current() === 'es' ? 'EN' : 'ES' }}
+      </button>
+      <a href="#contacto" class="btn btn--primary nav__cta">{{'nav.cta'|translate}}</a>
+    </div>
   </div>
 </header>

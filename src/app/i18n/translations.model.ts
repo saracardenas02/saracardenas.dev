@@ -3,7 +3,9 @@ export interface Job {
   role: string;
   org: string;
   url?: string;
+  current?: boolean;
   text: string;
+  tags: string[];
 }
 
 export interface Project {
@@ -13,22 +15,23 @@ export interface Project {
   live: boolean;
   url?: string;
   urlLabel?: string;
+  impact: string;
   problem: string;
   work: string;
-  stack: string;
+  stack: string[];
 }
 
 export interface Translations {
   meta:     { title: string; description: string; };
-  nav:      { home: string; work: string; projects: string; stack: string; contact: string; };
-  hero:     { title: string; lead: string; lead_em: string; lead_end: string; intro: string;
-              now_label: string; now: string; base_label: string; base: string;
-              stack_label: string; stack: string; cta: string; };
-  work:     { label: string; title: string; jobs: Job[]; };
-  projects: { label: string; title: string; intro: string; problem: string; work: string; stack: string;
-              items: Project[]; };
-  stack:    { label: string; title: string; groups: { name: string; items: string; }[];
+  nav:      { work: string; projects: string; stack: string; contact: string; cta: string; };
+  hero:     { title: string; status: string; headline: string; headline_2: string; intro: string;
+              cta: string; cv: string; cv_file: string; shot_caption: string;
+              stats: { value: string; label: string; }[]; };
+  work:     { label: string; title: string; current: string; jobs: Job[]; };
+  projects: { label: string; title: string; intro: string; problem: string; work: string;
+              visit: string; items: Project[]; };
+  stack:    { label: string; title: string; groups: { name: string; items: string[]; }[];
               edu_title: string; edu: { name: string; detail: string; }[]; };
-  contact:  { label: string; title: string; text: string; };
+  contact:  { label: string; title: string; text: string; copy: string; copied: string; };
   footer:   { place: string; top: string; };
 }

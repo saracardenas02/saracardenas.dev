@@ -2,47 +2,75 @@
 
 <!-- Portada -->
 <section class="hero wrap">
-  <p class="mono hero__kicker">{{t.hero.title}}</p>
-  <h1 class="hero__lead">
-    {{t.hero.lead}} <em>{{t.hero.lead_em}}</em>
-    <span class="hero__lead-end">{{t.hero.lead_end}}</span>
+  <p class="hero__status"><span class="dot" aria-hidden="true"></span>{{t.hero.status}}</p>
+  <h1 class="hero__title">
+    <span class="hero__name">{{t.hero.title}}</span>
+    {{t.hero.headline}}
+    <span class="hero__sub">{{t.hero.headline_2}}</span>
   </h1>
   <p class="hero__intro">{{t.hero.intro}}</p>
 
-  <dl class="hero__facts">
-    <div><dt class="mono">{{t.hero.now_label}}</dt><dd>{{t.hero.now}}</dd></div>
-    <div><dt class="mono">{{t.hero.base_label}}</dt><dd>{{t.hero.base}}</dd></div>
-    <div><dt class="mono">{{t.hero.stack_label}}</dt><dd>{{t.hero.stack}}</dd></div>
-  </dl>
-
-  <div class="hero__links">
-    <a href="#proyectos" class="btn">{{t.hero.cta}} ↓</a>
-    <a [href]="linkedin" target="_blank" rel="noopener" class="u-link">LinkedIn ↗</a>
-    <a [href]="github" target="_blank" rel="noopener" class="u-link">GitHub ↗</a>
+  <div class="hero__actions">
+    <a href="#proyectos" class="btn btn--primary">{{t.hero.cta}}</a>
+    <a [href]="'cv/' + t.hero.cv_file" download class="btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8m0 0L5 7m3 3 3-3M3 13h10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      {{t.hero.cv}}
+    </a>
+    <a [href]="linkedin" target="_blank" rel="noopener" class="btn btn--icon" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    </a>
+    <a [href]="github" target="_blank" rel="noopener" class="btn btn--icon" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></svg>
+    </a>
   </div>
+
+  <figure class="shot">
+    <div class="shot__bar" aria-hidden="true">
+      <span></span><span></span><span></span>
+      <span class="shot__url">kalendapp.celvo.dev</span>
+    </div>
+    <a href="https://kalendapp.celvo.dev" target="_blank" rel="noopener" class="shot__img">
+      <img src="img/kalendapp.webp" width="2160" height="900" alt="Kalendapp" fetchpriority="high">
+    </a>
+    <figcaption>{{t.hero.shot_caption}}</figcaption>
+  </figure>
+
+  <dl class="stats">
+    @for (s of t.hero.stats; track s.label) {
+      <div><dt>{{s.value}}</dt><dd>{{s.label}}</dd></div>
+    }
+  </dl>
 </section>
 
-<!-- Trayectoria -->
-<section id="trayectoria" class="block wrap">
-  <header class="block__head">
-    <span class="mono">01 / {{t.work.label}}</span>
+<!-- Experiencia -->
+<section id="experiencia" class="section wrap">
+  <header class="section__head">
+    <p class="label">{{t.work.label}}</p>
     <h2>{{t.work.title}}</h2>
   </header>
 
   <ol class="jobs">
     @for (j of t.work.jobs; track j.dates) {
       <li class="job">
-        <span class="mono job__dates">{{j.dates}}</span>
-        <div class="job__body">
-          <h3 class="job__role">{{j.role}}</h3>
+        <p class="job__dates label">{{j.dates}}</p>
+        <div>
+          <div class="job__top">
+            <h3>{{j.role}}</h3>
+            @if (j.current) { <span class="badge">{{t.work.current}}</span> }
+          </div>
           <p class="job__org">
             @if (j.url) {
-              <a [href]="j.url" target="_blank" rel="noopener" class="u-link">{{j.org}}</a>
+              <a [href]="j.url" target="_blank" rel="noopener">{{j.org}} ↗</a>
             } @else {
               {{j.org}}
             }
           </p>
           <p class="job__text">{{j.text}}</p>
+          @if (j.tags.length) {
+            <div class="chips">
+              @for (tag of j.tags; track tag) { <span class="chip">{{tag}}</span> }
+            </div>
+          }
         </div>
       </li>
     }
@@ -50,71 +78,87 @@
 </section>
 
 <!-- Proyectos -->
-<section id="proyectos" class="block wrap">
-  <header class="block__head">
-    <span class="mono">02 / {{t.projects.label}}</span>
+<section id="proyectos" class="section wrap">
+  <header class="section__head">
+    <p class="label">{{t.projects.label}}</p>
     <h2>{{t.projects.title}}</h2>
-    <p class="block__intro">{{t.projects.intro}}</p>
+    <p class="section__intro">{{t.projects.intro}}</p>
   </header>
 
-  @for (p of t.projects.items; track p.name; let i = $index) {
-    <article class="project">
-      <div class="project__side">
-        <span class="project__num">{{pad(i)}}</span>
-        <h3 class="project__name">{{p.name}}</h3>
-        <p class="mono">{{p.kind}}</p>
-        <p class="project__status mono" [class.project__status--live]="p.live">
-          <span class="project__dot" aria-hidden="true"></span>{{p.status}}
-        </p>
-        @if (p.url) {
-          <a [href]="p.url" target="_blank" rel="noopener" class="u-link project__url">{{p.urlLabel}} ↗</a>
-        }
-      </div>
-      <dl class="project__detail">
-        <div><dt class="mono">{{t.projects.problem}}</dt><dd>{{p.problem}}</dd></div>
-        <div><dt class="mono">{{t.projects.work}}</dt><dd>{{p.work}}</dd></div>
-        <div><dt class="mono">{{t.projects.stack}}</dt><dd class="project__stack">{{p.stack}}</dd></div>
-      </dl>
-    </article>
-  }
+  <div class="projects">
+    @for (p of t.projects.items; track p.name; let first = $first) {
+      <article class="card project" [class.project--featured]="first">
+        <div class="project__top">
+          <div>
+            <h3>{{p.name}}</h3>
+            <p class="project__kind">{{p.kind}}</p>
+          </div>
+          <span class="status" [class.status--live]="p.live">
+            <span class="dot" aria-hidden="true"></span>{{p.status}}
+          </span>
+        </div>
+
+        <p class="project__impact">{{p.impact}}</p>
+
+        <dl class="project__body">
+          <div><dt class="label">{{t.projects.problem}}</dt><dd>{{p.problem}}</dd></div>
+          <div><dt class="label">{{t.projects.work}}</dt><dd>{{p.work}}</dd></div>
+        </dl>
+
+        <div class="project__foot">
+          <div class="chips">
+            @for (s of p.stack; track s) { <span class="chip">{{s}}</span> }
+          </div>
+          @if (p.url) {
+            <a [href]="p.url" target="_blank" rel="noopener" class="btn">{{t.projects.visit}} ↗</a>
+          }
+        </div>
+      </article>
+    }
+  </div>
 </section>
 
-<!-- Herramientas -->
-<section id="herramientas" class="block wrap">
-  <header class="block__head">
-    <span class="mono">03 / {{t.stack.label}}</span>
+<!-- Stack -->
+<section id="stack" class="section wrap">
+  <header class="section__head">
+    <p class="label">{{t.stack.label}}</p>
     <h2>{{t.stack.title}}</h2>
   </header>
 
-  <div class="toolkit">
-    <dl class="toolkit__list">
-      @for (g of t.stack.groups; track g.name) {
-        <div><dt>{{g.name}}</dt><dd>{{g.items}}</dd></div>
-      }
-    </dl>
-    <aside class="toolkit__edu">
-      <p class="mono">{{t.stack.edu_title}}</p>
-      @for (e of t.stack.edu; track e.name) {
-        <div class="edu">
-          <p class="edu__name">{{e.name}}</p>
-          <p class="edu__detail">{{e.detail}}</p>
+  <div class="stack">
+    @for (g of t.stack.groups; track g.name) {
+      <div class="card stack__group">
+        <h3>{{g.name}}</h3>
+        <div class="chips">
+          @for (i of g.items; track i) { <span class="chip">{{i}}</span> }
         </div>
-      }
-    </aside>
+      </div>
+    }
+    <div class="card stack__edu">
+      <h3>{{t.stack.edu_title}}</h3>
+      <ul>
+        @for (e of t.stack.edu; track e.name) {
+          <li><strong>{{e.name}}</strong><span>{{e.detail}}</span></li>
+        }
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- Contacto -->
-<section id="contacto" class="block wrap contact">
-  <header class="block__head">
-    <span class="mono">04 / {{t.contact.label}}</span>
-  </header>
-  <h2 class="contact__title">{{t.contact.title}}</h2>
-  <p class="contact__text">{{t.contact.text}}</p>
-  <a [href]="'mailto:' + email" class="contact__mail">{{email}}</a>
-  <div class="contact__links">
-    <a [href]="linkedin" target="_blank" rel="noopener" class="u-link">LinkedIn ↗</a>
-    <a [href]="github" target="_blank" rel="noopener" class="u-link">GitHub ↗</a>
-    <a href="https://celvo.dev" target="_blank" rel="noopener" class="u-link">Celvo ↗</a>
+<section id="contacto" class="section wrap">
+  <div class="card contact">
+    <p class="label">{{t.contact.label}}</p>
+    <h2>{{t.contact.title}}</h2>
+    <p class="contact__text">{{t.contact.text}}</p>
+    <div class="contact__mail">
+      <a [href]="'mailto:' + email" class="btn btn--primary">{{email}}</a>
+      <button type="button" class="btn" (click)="copyEmail()">{{ copied() ? t.contact.copied : t.contact.copy }}</button>
+    </div>
+    <div class="contact__links">
+      <a [href]="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a [href]="github" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://celvo.dev" target="_blank" rel="noopener">Celvo ↗</a>
+    </div>
   </div>
 </section>
